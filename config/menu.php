@@ -31,8 +31,7 @@ Menu::macro('sidebar', function () {
 //        ->url('http://www.google.com', 'Google')
         ->add(Menu::adminlteSeparator('Acacha Adminlte'))
         #adminlte_menu
-        ->add(Link::toUrl('link', '<i class="fa fa-link"></i><span>about</span>'))
-        ->add(Link::toUrl('link', '<i class="fa fa-link"></i><span>dashboard</span>'))
+        ->add(Link::toUrl('link', '<i class="fa fa-link"></i><span>employee</span>'))
         ->add(Menu::adminlteSeparator('SECONDARY MENU'))
         ->add(Menu::new()->prepend('<a href="#"><i class="fa fa-share"></i><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>')
             ->addParentClass('treeview')
