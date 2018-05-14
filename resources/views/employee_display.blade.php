@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('htmlheader_title')
-	Change Title here!
+	Emoloyee Details
 @endsection
 
 
@@ -19,7 +19,7 @@
                         </div>
                         <!-- /.box-tools -->
                     </div>
-                    <a href="#" class="pull-right"><button type="button" class="btn btn-primary">Add</button></a>
+                    <a href="{{ route('employeeList') }}" class="pull-right"><button type="button" class="btn btn-primary">Add</button></a>
 
 
                     <!-- /.box-header -->
@@ -32,35 +32,35 @@
                             @endif
                             <table class="table table-bordered">
                                 <thead>
-                                  <tr>
-                                    <th>Firstname</th>
-                                    <th>Email</th>
-                                    <th>Gender</th>
-                                    <th>Country</th>
-                                    <th>Bdate</th>
-                                    <th>Action</th>
-                                  </tr>
-                               </thead>
-                                <tbody>
-                                    @if(count($employeeData)>0)
-                                    @foreach(employeeData as $row)
+                                      <tr>
+                                        <th>Firstname</th>
+                                        <th>Email</th>
+                                        <th>Gender</th>
+                                        <th>Country</th>
+                                        <th>Bdate</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    @foreach($employeeData as $row)
                                       <tr>
                                         <td>{{$row->full_name }}</td>
                                         <td>{{$row->email }}</td>
-                                        <td>{{$row->gender }}</td>
-                                        <td>{{$row->country->country_name}}</td>
+                                        <td>{{ $row->gender }}</td>
+                                        <td>{{$row->countryList->country_name}}</td>
                                         <td><?php echo $row->bdate?date('d-m-Y',strtotime($row->bdate)):'-'; ?></td>
                                         <td>
-                                          <a href="{{ route('emp-delete',[$row->id]) }}" onClick="return confirm('Are you sure for delete this?');"><button type="button" class="btn btn-danger">Delete</button></a>
-                                          <a href="{{ route('emp-update',[$row->id]) }}"><button type="button" class="btn btn-success">Update</button></a>
+                                            <a href="{{ route('employeeDelete',[$row->id]) }}" onClick="return confirm('Are you sure for delete this?');">
+                                                <i class="fa fa-trash"></i>
+                                            </a>&nbsp;
+                                            <a href="{{ route('employeeUpdateView',[$row->id]) }}">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
                                         </td>
                                       </tr>      
                                     @endforeach
-                                    
-                                    @else
-                                        <h3>No data</h3>
-                                    @endif
-                                </tbody>   
+                                    </tbody>
                             </table>
                         </div>
                     </div>
